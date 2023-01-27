@@ -1,0 +1,72 @@
+#include <cstring>
+#include <iostream>
+#include "student.h"
+#include "node.h"
+
+using namespace std;
+
+int main(){
+  //for quit delete head and also make a while loop till userInput equals quit
+  char userInput[20];
+  cin.get(userInput, 20);
+  do{
+    cout<<"Type 'add' to add student;Type 'delete' to delete student;Type 'print' to print all student's info;Type 'quit' to quit; 'Average' for average student GPA."<<endl;
+    cin.getline(userInput,10,'\n');//gets the user's request then clears the cin
+  
+  if(strcmp(userInput, "add") == 0){//if they say add run the add function
+    add(studentInfo);
+  }
+  if(strcmp(userInput, "print")==0){//if they say print run the print function
+    print(studentInfo);//pass in the vector as a parameter in code so the that the information goes into the vector
+  }
+  if(strcmp(userInput, "del")==0){//if they say delete run the delete function
+    del(studentInfo);
+  }
+  }while(strcmp(userInput, "quit") != 0);
+
+  
+  char* test = new char[20];
+  int numstud;
+  float gradepoint;
+  cout<<"Name?"<<endl;
+  cin>>test;
+  student* s = new student(test);
+  node* n = new node(s);
+
+  cout<<"number"<<endl;
+  cin>>numstud;
+  s->setNumber(numstud);
+
+  cout<<"GPA"<<endl;
+  cin>>gradepoint;
+  s->setGPA(gradepoint);
+
+  cout<<"Here's the information"<<endl;
+
+  cout<< s->getName() << endl;
+  cout<< s->getNumber() << endl;
+  cout<< s->getGPA() << endl;
+
+  char* test2 = new char[20];
+  student* s2 = new student(test2);
+  node* new2 = new node(s2);
+
+  n->setNext(new2);
+  cout<< n->getNext() << endl;
+}
+
+void add(){
+
+}
+
+void print(){
+
+}
+
+void delete1(){
+
+}
+
+void average(){
+
+}

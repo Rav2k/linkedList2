@@ -1,0 +1,30 @@
+#include "student.h"
+#include <cstring>
+
+student::student(char* names){
+  strcpy(name, names);
+}
+
+student::student(){
+  //default constructor
+}
+
+char* student::getName(){
+  return name;
+}
+
+void student::setNumber(int studentNum){
+  number = studentNum;
+}
+
+int student::getNumber(){
+  return number;
+}
+
+void student::setGPA(float grade){
+  GPA = grade;
+}
+
+float student::getGPA(){
+  return GPA;
+}
