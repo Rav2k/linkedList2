@@ -4,69 +4,50 @@
 #include "node.h"
 
 using namespace std;
-
-int main(){
+node *head = NULL;
   //for quit delete head and also make a while loop till userInput equals quit
+void add(node *c, node *p, node *&head, student *newStu);
+void print(node *head);
+void delete1(node * &head, int numDelete);
+int studentCounter(node *head);
+void average(node *gpaTaker, int number, float average2);
+student* studentMaker();
+int main(){
   char userInput[20];
-  cin.get(userInput, 20);
+  int num = 0;
+  int numDelete = 0;
   do{
     cout<<"Type 'add' to add student;Type 'delete' to delete student;Type 'print' to print all student's info;Type 'quit' to quit; 'Average' for average student GPA."<<endl;
-    cin.getline(userInput,10,'\n');//gets the user's request then clears the cin
-  
+    cin.getline(userInput,20,'\n');//gets the user's request then clears the cin
+
   if(strcmp(userInput, "add") == 0){//if they say add run the add function
-    add(studentInfo);
+    student* student = studentMaker();
+    add(head, head, head, student);
+    cout<<"Student Added!"<<endl;
   }
-  if(strcmp(userInput, "print")==0){//if they say print run the print function
-    print(studentInfo);//pass in the vector as a parameter in code so the that the information goes into the vector
+  if(strcmp(userInput, "print")==0){//if they say print run the print functi
+    print(head);
   }
-  if(strcmp(userInput, "del")==0){//if they say delete run the delete function
-    del(studentInfo);
+  if(strcmp(userInput, "delete")==0){//if they say delete run the delete function
+    delete1(head, numDelete);
+    cout<<"Student deleted"<<endl;
+  }
+  if(strcmp(userInput, "average") == 0){
+    if(head == NULL){
+      cout<<"no students in list"<<endl;
+    }
+    else{
+      num = studentCounter(head);
+      average(head, num, 0);
+    }
   }
   }while(strcmp(userInput, "quit") != 0);
 
-  
-  char* test = new char[20];
-  int numstud;
-  float gradepoint;
-  cout<<"Name?"<<endl;
-  cin>>test;
-  student* s = new student(test);
-  node* n = new node(s);
-
-  cout<<"number"<<endl;
-  cin>>numstud;
-  s->setNumber(numstud);
-
-  cout<<"GPA"<<endl;
-  cin>>gradepoint;
-  s->setGPA(gradepoint);
-
-  cout<<"Here's the information"<<endl;
-
-  cout<< s->getName() << endl;
-  cout<< s->getNumber() << endl;
-  cout<< s->getGPA() << endl;
-
-  char* test2 = new char[20];
-  student* s2 = new student(test2);
-  node* new2 = new node(s2);
-
-  n->setNext(new2);
-  cout<< n->getNext() << endl;
 }
 
-void add(){
+void add(node *c, node *p, node *&head, student *newStud){
 
-}
-
-void print(){
-
-}
-
-void delete1(){
-
-}
-
-void average(){
-
-}
+  if(head == NULL){
+    head = new node(newStud);//if linked list is empty
+    return;//if this is true then i don't need to check through more
+  }
